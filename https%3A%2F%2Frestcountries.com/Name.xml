@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="Name" path="/v3.1/name/{Name}" id="05323548-578c-412a-a781-1aa8b0c3e69c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="05323548-578c-412a-a781-1aa8b0c3e69cfileName">Name</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>Name</con:name>
+      <con:style>TEMPLATE</con:style>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Name" id="01eb17ee-0f8b-4960-b9c7-fe614fdfe8bb" method="GET">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>Name</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>text/html</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>html</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="a919798d-ccf6-4326-bfa6-dfe740532f1f" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>https://restcountries.com</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://restcountries.com/v3.1/name/India</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="Name" value="USA"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>Name</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

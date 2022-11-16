@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="bd06fbc7-30e7-4ece-a0cf-6f08267ed2b4" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="https://restcountries.com Test Case 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="bd06fbc7-30e7-4ece-a0cf-6f08267ed2b4fileName">https%3A%2F%2Frestcountries.com-Test-Case-1</con:setting>
+  </con:settings>
+  <con:testStep type="datasource" name="Data Source" id="619f9d08-bf2c-477f-8df1-84630f6b1a39">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Excel">
+        <con:configuration>
+          <file>C:/Users/ADMIN/Desktop/Tests.xlsx</file>
+          <worksheet>Sheet2</worksheet>
+          <cell>A2</cell>
+          <ignoreEmpty>true</ignoreEmpty>
+          <evaluateFormulas>false</evaluateFormulas>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>Data</con:property>
+      <con:restartOnRun>true</con:restartOnRun>
+      <con:stopDatasourceExhausted>false</con:stopDatasourceExhausted>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Request 1" id="c8da6054-8eb8-47b9-9e52-e3351aa0089d">
+    <con:settings/>
+    <con:config service="https://restcountries.com" resourcePath="/v3.1/name/{Name}" methodName="Name" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Request 1" id="a919798d-ccf6-4326-bfa6-dfe740532f1f" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>https://restcountries.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://restcountries.com/v3.1/name/name</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="57907898-85c1-449c-b49c-6672f2adf9e3" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="Name" value="${Data Source#Data}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>Name</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Data Source Loop" id="174d715e-b3e9-4d5b-b3da-62ab0f999bb0">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Data Source</dataSourceStep>
+      <targetStep>Request 1</targetStep>
+      <discardResults>true</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>
